@@ -4,9 +4,13 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'canasia.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
+    url(r'^$', 'core.views.home', name='home'),
+    url(r'^logout/$', 'core.views.logout_aux', name='logout'),
+    url(r'^overview/$', 'core.views.overview', name='overview'),
+    url(r'^overview/(?P<filter_value>.+)/$', 'core.views.overview', name='overview'),
+
+    url(r'^forgot_password/$', 'core.views.forgot_password', name='forgot_password'),  
+    url(r'^change_password/$', 'core.views.change_password', name='change_password'), 
 
     url(r'^admin/', include(admin.site.urls)),
 )

@@ -1,0 +1,220 @@
+html { 
+	height: 100% 
+}
+
+body { 
+	height: 100%; 
+	margin: 0; 
+	padding: 0 
+}
+
+.my_header{
+	display: block;
+	height:50px;
+}
+
+@media (min-width: 991px){
+	.my_search{
+		width: 500px !important;
+	}
+}
+
+@media (max-width: 768px){
+	.my_search div input{
+		vertical-align: middle !important;
+	}
+	.my_search div{
+		margin-bottom: 0 !important;
+	}
+}
+
+.my_search div{
+	width: 100%;
+	display: inline-block;
+	margin: 0 auto;
+	padding-right: 15px;
+}
+
+.my_search div input{
+	width: 80% !important;
+	display: inline-block !important;
+}
+
+.my_search div button{
+	width: 20% !important;
+}
+
+#map-canvas { 
+	display: block;
+	float:left;
+	width: 100%;
+	height: 100% 
+}
+
+.filter_color_box{
+	display: inline-block;
+	width: 25px;
+	height: 25px;
+	color:black;
+	text-align: center;
+}
+
+.filter_line{
+	height:25px;
+	margin: 10px 0;
+	margin-right: 15px;
+	width:100%;
+	vertical-align: middle;
+}
+
+.filter_line span{
+	vertical-align: middle;
+}
+
+#color{
+	padding:1px;
+}
+
+.pac-container{
+	z-index: 1100;
+}
+
+.navbar-input-group {
+  font-size: 0px; /*removes whitespace between button and input*/
+}
+
+.navbar-input-group input {
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+.navbar-input-group .btn {
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  border-left: 0px;
+}
+
+#my_error{
+	text-align: center;
+	margin-bottom: 0;
+}
+
+.my_logo{
+	height: 40px;
+	margin: 5px 0 5px 15px;
+}
+
+.my_logo2{
+	display: block;
+	height: 50px;
+	margin: 0 auto;
+}
+
+.box_title{
+	text-align: center;
+}
+
+.box_content{
+	max-height: 450px;
+	max-width: 350px;
+	overflow: auto;
+	padding-left: 15px;
+}
+
+.my_table{
+	margin-bottom: 0!important;
+}
+
+.form_error{
+	font-size: 14px !important;
+}
+
+#filters_drop{
+	max-height: 500px;
+	overflow: auto;
+}
+
+.filter_color_box img{
+	height: 25px;
+}
+
+.dashboard{
+	padding: 0 !important;
+	margin: 0 !important;
+}
+
+.dashboard a{
+	float: right;
+	margin: 6px 0;
+}
+
+
+.dashboard h3{
+	margin: 10px 0;
+}
+
+.hidden{
+	overflow: hidden;
+}
+
+.my_form{
+	width:600px;
+	margin: 0 auto;
+}
+
+.align_center{
+	text-align: center;
+}
+
+.filter_line span{
+	display: inline-block;
+}
+
+@media (min-width: 768px) and (max-width: 991px){
+	.my_search{
+		width: 300px !important;
+	}
+	.my_search div button{
+		width: 30% !important;
+	}
+	.my_search div input{
+		width: 70% !important;
+	}
+}
+
+@media (min-width: 991px) and (max-width: 1200px){
+	.my_search{
+		width: 400px !important;
+	}
+}
+
+th.header { 
+    background-image: url(../img/table/bg.gif); 
+    cursor: pointer !important;  
+    background-repeat: no-repeat; 
+    background-position: center right !important; 
+} 
+
+th.headerSortDown { 
+    background-image: url(../img/table/desc.gif); 
+    background-color: #eee;
+}
+
+th.headerSortUp { 
+    background-image: url(../img/table/asc.gif); 
+    background-color: #eee;
+} 
+
+.loading {
+	background:#000 url(../img/loading.gif) no-repeat center center;
+	height: 50px;
+	width: 50px;
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	margin: -25px 0 0 -25px;
+	z-index: 3000;
+	opacity: 0.7;
+	-webkit-border-radius: 10px 10px 10px 10px;
+	border-radius: 10px 10px 10px 10px;
+}

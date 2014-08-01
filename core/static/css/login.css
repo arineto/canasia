@@ -1,0 +1,41 @@
+body{
+	background-image: url('../img/Nelson_bg.jpg');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-attachment: fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+.login_box{
+	width:500px;
+	overflow:hidden;
+	margin: 200px auto;
+	background-color: #EEE;
+	padding:20px 30px;
+	-webkit-border-radius: 10px 10px 10px 10px;
+	border-radius: 10px 10px 10px 10px;
+	opacity:0.9;
+}
+
+.logo{
+	margin-bottom: 10px;
+	text-align: center;
+}
+
+.right{
+	float: right;
+}
+
+.logo img{
+	height: 100px;
+}
+
+@media (max-width: 500px){
+	.login_box{
+		width: 300px;
+		margin: 100px auto
+	}
+}
