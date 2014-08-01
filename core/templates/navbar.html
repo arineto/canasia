@@ -1,4 +1,4 @@
-<div class="my_header">
+ <div class="my_header">
   <div class="navbar navbar-defalut navbar-fixed-top" role="navigation">
     <div class="navbar-header hidden-sm">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -13,46 +13,63 @@
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right" style="padding-right:15px;">
         
-        <li>
-          <div class="navbar-form navbar-input-group my_search" role="search">
-            <div class="form-group" style="margin-left: 15px;">
-              <input id="searchTextField" type="textbox" class="form-control" placeholder="Enter location">
-              <button onclick="codeAddress()" class="btn btn-primary">Search</button>
+        {% if overview %}
+          <li>
+            <div class="navbar-form navbar-input-group my_search" role="search">
+              <div class="form-group" style="margin-left: 15px;">
+                <input id="searchTextField" type="textbox" class="form-control" placeholder="Enter location">
+                <button onclick="codeAddress()" class="btn btn-primary">Search</button>
+              </div>
             </div>
-          </div>
-        </li>
+          </li>
+        {% else %}
+          <li>
+            <form method="POST" action="" class="navbar-form navbar-input-group my_search" role="search">
+              {% csrf_token %}
+              <div class="form-group" style="margin-left: 15px;">
+                <input id="searchTextField" name="search" type="textbox" class="form-control" placeholder="Search Box" value="{% if search_value %}{{ search_value }}{% endif %}">
+                <button class="btn btn-primary">Search</button>
+              </div>
+            </form>
+          </li>
+        {% endif %}
 
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sectors<b class="caret"></b></a>
-          <ul class="dropdown-menu" id="filters_drop">
-            {% for sector in sectors %}
-            <li>
-              <a href="/overview/{{ sector.name }}">
-                <div class="filter_line">
-                  <span class="filter_color_box"><img src="{{ brand.icon.url }}"></span>
-                  <span>{{ sector.name }}</span>
-                </div>
-              </a>
-            </li>
-            {% endfor %}
-          </ul>
-        </li>
+        <li><a href="/overview/">Overview</a></li>
+        <li><a href="/dashboard/">Dashboard</a></li>
 
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Countries<b class="caret"></b></a>
-          <ul class="dropdown-menu" id="filters_drop">
-            {% for country in countries %}
-            <li>
-              <a href="/overview/{{ country.name }}">
-                <div class="filter_line">
-                  <span class="filter_color_box"><img src="{{ brand.icon.url }}"></span>
-                  <span>{{ country.name }}</span>
-                </div>
-              </a>
-            </li>
-            {% endfor %}
-          </ul>
-        </li>
+        {% if overview %}
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sectors<b class="caret"></b></a>
+            <ul class="dropdown-menu" id="filters_drop">
+              {% for sector in sectors %}
+              <li>
+                <a href="/overview/{{ sector.name }}">
+                  <div class="filter_line">
+                    <span class="filter_color_box"><img src="{{ brand.icon.url }}"></span>
+                    <span>{{ sector.name }}</span>
+                  </div>
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+          </li>
+
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Countries<b class="caret"></b></a>
+            <ul class="dropdown-menu" id="filters_drop">
+              {% for country in countries %}
+              <li>
+                <a href="/overview/{{ country.name }}">
+                  <div class="filter_line">
+                    <span class="filter_color_box"><img src="{{ brand.icon.url }}"></span>
+                    <span>{{ country.name }}</span>
+                  </div>
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+          </li>
+        {% endif %}
         
         {% if user.is_authenticated %}
           <li class="dropdown">

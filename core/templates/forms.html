@@ -38,12 +38,12 @@
 <body>
 	{% include 'navbar.html' %}
 	<div class="jumbotron">
-		<form method="POST" action="" name="form" role="form" class="my_form">
+		<form method="POST" action="" name="form" role="form" class="my_form" enctype="multipart/form-data">
 			{% csrf_token %}
 			{% if change_password %}
 				<h4>Change Password</h4>
 			{% else %}
-				<h4>Add Branch</h4>
+				<h4>Add Project</h4>
 			{% endif %}
 			{% for field in form %}
 		      <div class="form-group {% if field.errors %}has-error{% endif %}">

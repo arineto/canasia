@@ -2,6 +2,20 @@ from django.forms import ModelForm
 from django import forms
 from core.models import *
 
+class ProjectForm(ModelForm):
+	class Meta:
+		model = Project
+		exclude = ('latitude', 'longitude')
+
+	def __init__(self, *args, **kwargs):
+		super(ProjectForm, self).__init__(*args, **kwargs)
+		self.fields['title'].widget.attrs.update({'class' : 'form-control'})
+		self.fields['company'].widget.attrs.update({'class' : 'form-control'})
+		self.fields['country'].widget.attrs.update({'class' : 'form-control'})
+		self.fields['sector'].widget.attrs.update({'class' : 'form-control'})
+		self.fields['address'].widget.attrs.update({'class' : 'form-control'})
+		self.fields['picture'].widget.attrs.update({'class' : 'form-control'})
+
 
 class ChangePasswordForm(forms.Form):
 	old_password = forms.CharField(label='Old Password', widget=forms.PasswordInput)

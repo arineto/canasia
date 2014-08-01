@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.core.mail import EmailMessage
+from django.db.models import Q
 from random import randint
 from core.models import *
 from core.forms import *
@@ -48,7 +49,25 @@ def overview(request, filter_value=None):
 		except:
 			projects = Project.objects.all()
 	
-	return render(request, 'overview.html', {'projects':projects, 'countries':countries, 'sectors':sectors})
+	return render(request, 'overview.html', {'overview':True ,'projects':projects, 'countries':countries, 'sectors':sectors})
+
+
+@login_required
+def dashboard(request):
+	search_value = None
+	projects = Project.objects.all()
+	
+	if request.method == 'POST':
+		search_value = request.POST.get('search')
+		projects = projects.filter(
+				Q(country__name__icontains=search_value) |
+				Q(sector__name__icontains=search_value) |
+				Q(company__icontains=search_value) |
+				Q(title__icontains=search_value) |
+				Q(address__icontains=search_value)
+			).order_by('-id')
+	
+	return render(request, 'dashboard.html', {'search_value':search_value, 'projects':projects})
 
 
 def forgot_password(request):
@@ -85,3 +104,46 @@ def change_password(request):
 	else:
 		form = ChangePasswordForm()
 	return render(request, 'forms.html', {'change_password':True, 'form':form, 'error':error})
+
+
+@login_required
+def add_project(request):
+	if request.method == "POST":
+		form = ProjectForm(request.POST, request.FILES)
+		lat = request.POST.get('latitude')
+		lng = request.POST.get('longitude')
+		if form.is_valid():
+			project = form.save(commit=False)
+			project.latitude = lat
+			project.longitude = lng
+			project.save()
+			return redirect("/dashboard/")
+	else:
+		form = ProjectForm()
+
+	return render(request, 'forms.html', {'form':form})
+
+
+@login_required
+def edit_project(request, project_id):
+	instance = Project.objects.get(id=project_id)
+	if request.method == "POST":
+		form = ProjectForm(request.POST, request.FILES ,instance=instance)
+		lat = request.POST.get('latitude')
+		lng = request.POST.get('longitude')
+		if form.is_valid():
+			project = form.save(commit=False)
+			project.latitude = lat
+			project.longitude = lng
+			project.save()
+			return redirect("/dashboard/")
+	else:
+		form = ProjectForm(instance=instance)
+
+	return render(request, 'forms.html', {'form':form})
+
+
+@login_required
+def delete_project(request, project_id):
+	Project.objects.get(id=project_id).delete()
+	return redirect('/dashboard/')

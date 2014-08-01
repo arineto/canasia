@@ -21,37 +21,31 @@
 <body>
 	{% include 'navbar.html' %}
 	<div class="row jumbotron dashboard">
-		<div class="col-md-8"><h3>Branches</h3></div>
-		<div class="col-md-4"><a href="/add_branch/" class="btn btn-default">Add Branch</a></div>
+		<div class="col-md-8"><h3>Projects</h3></div>
+		<div class="col-md-4"><a href="/add_project/" class="btn btn-default">Add Project</a></div>
 	</div>
 	<table id="my_table" class="table table-striped table-bordered">
 		<thead>
 			<tr>
-				<th>Company Name</th>
-				<th>Franchise</th>
-				<th>Contact Name</th>
-				<th>Phone</th>
-				<th>E-mail</th>
-				<th>Owner Name</th>
-				<th>Operator Name</th>
+				<th>Title</th>
+				<th>Company</th>
+				<th>Country</th>
+				<th>Sctor</th>
 				<th>Address</th>
 				<th></th>
 				<th></th>
 			</tr>
 		</thead>
 		<tbody>
-			{% for branch in branches %}
+			{% for project in projects %}
 				<tr>
-					<td>{{ branch.name }}</td>
-					<td>{{ branch.franchise.name }}</td>
-					<td>{{ branch.contact_name }}</td>
-					<td>{{ branch.phone }}</td>
-					<td>{{ branch.email }}</td>
-					<td>{{ branch.owner_name }}</td>
-					<td>{{ branch.operator_name }}</td>
-					<td>{{ branch.address }}</td>
-					<td><a href="/edit_branch/{{ branch.id }}/">Edit</a></td>
-					<td><a href="/delete_branch/{{ branch.id }}/">Delete</a></td>
+					<td>{{ project.title }}</td>
+					<td>{{ project.company }}</td>
+					<td>{{ project.country.name }}</td>
+					<td>{{ project.sector.name }}</td>
+					<td>{{ project.address }}</td>
+					<td><a href="/edit_project/{{ project.id }}/">Edit</a></td>
+					<td><a href="/delete_project/{{ project.id }}/">Delete</a></td>
 				</tr>
 			{% endfor %}
 		</tbody>

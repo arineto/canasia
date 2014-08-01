@@ -4,9 +4,15 @@ from django.db import models
 class Country(models.Model):
 	name = models.CharField(max_length=50)
 
+	def __unicode__(self):
+		return self.name
+
 
 class Sector(models.Model):
 	name = models.CharField(max_length=100)
+
+	def __unicode__(self):
+		return self.name
 
 
 class Project(models.Model):
@@ -18,3 +24,6 @@ class Project(models.Model):
 	address = models.CharField(max_length=200)
 	latitude = models.CharField(max_length=50)
 	longitude = models.CharField(max_length=50)
+
+	def __unicode__(self):
+		return self.title
