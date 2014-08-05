@@ -3,6 +3,7 @@ from django.db import models
 
 class Country(models.Model):
 	name = models.CharField(max_length=50)
+	image = models.FileField(upload_to="country_images/", null=True)
 
 	def __unicode__(self):
 		return self.name
@@ -10,6 +11,7 @@ class Country(models.Model):
 
 class Sector(models.Model):
 	name = models.CharField(max_length=100)
+	image = models.FileField(upload_to="sector_images/", null=True)
 
 	def __unicode__(self):
 		return self.name

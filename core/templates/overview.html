@@ -25,8 +25,8 @@
 			map = init_map(map);
 
 			{% for project in projects %}
-				content = "{{ project.title }}";
-		        icon = "";
+				content = "<div class='box_content'> <div class='box_title'> <h4>{{ project.country }}</h4> <h6>{{ project.sector }}</h6> </div> <div class='box_info'> <div class='box_image'><img src='{{ project.picture.url }}'></div> <div class='project_info'> <p><b>{{ project.company }}</b></p> <p>{{ project.title }}</p> </div> </div> </div>";
+		        icon = "{{ project.sector.image.url }}";
 		        create_marker("{{ project.title }}", "{{ project.latitude }}", "{{ project.longitude }}", icon, content);
 			{% endfor %}
 	    }

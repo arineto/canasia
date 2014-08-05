@@ -53,15 +53,20 @@ body {
 
 .filter_color_box{
 	display: inline-block;
-	width: 25px;
-	height: 25px;
+	width: 30px;
+	height: 30px;
 	color:black;
 	text-align: center;
+	margin-right: 5px;
+}
+
+.flag{
+	width:45px;
 }
 
 .filter_line{
-	height:25px;
-	margin: 10px 0;
+	height:30px;
+	margin: 5px 0;
 	margin-right: 15px;
 	width:100%;
 	vertical-align: middle;
@@ -110,15 +115,45 @@ body {
 	margin: 0 auto;
 }
 
-.box_title{
-	text-align: center;
+.box_content{
+	width: 420px;
+	height: 190px;
+	margin: 10px 20px;
 }
 
-.box_content{
-	max-height: 450px;
-	max-width: 350px;
-	overflow: auto;
-	padding-left: 15px;
+.box_title h4{
+	color:#002a5d;
+}
+
+.box_title h6{
+	color:#e2332f;
+}
+
+.box_info{
+	width:100%;
+}
+
+.box_image{
+	width:135px;
+	height:135px;
+	float: left;
+}
+
+.box_image img{
+	width:135px;
+	height:135px;
+}
+
+.project_info{
+	width:260px;
+	height:135px;
+	float: left;
+	margin-left: 20px;
+	margin-top: 10px;
+}
+
+.project_info p{
+	color:#002a5d;
 }
 
 .my_table{
@@ -135,7 +170,7 @@ body {
 }
 
 .filter_color_box img{
-	height: 25px;
+	height: 30px;
 }
 
 .dashboard{

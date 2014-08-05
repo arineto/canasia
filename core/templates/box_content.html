@@ -1,11 +1,13 @@
 <div class='box_content'>
-	<img class='my_logo2' src='{{ STATIC_URL }}img/yum.svg'>
-	<h4 class='box_title'>{{ branch.name }}</h4>
-	<p class='align_center'>{{ branch.address }}</p>
-	<p><b>Franchise:</b> {{ branch.get_franchise_display }}</p>
-	<p><b>Contact Name:</b> {{ branch.contact_name }}</p>
-	<p><b>Phone:</b> {{ branch.phone }}</p>
-	<p><b>E-mail:</b> {{ branch.email }}</p>
-	<p><b>Owner Name:</b> {{ branch.owner_name }}</p>
-	<p><b>Operator Name:</b> {{ branch.operator_name}}</p>
+	<div class='box_title'>
+		<h4>{{ project.country }}</h4>
+		<h6>{{ project.sector }}</h6>
+	</div>
+	<div class='box_info'>
+		<div class='box_image'><img src='{{ project.picture.url }}'></div>
+		<div class='project_info'>
+			<p><b>{{ project.company }}</b></p>
+			<p>{{ project.title }}</p>
+		</div>
+	</div>
 </div>
