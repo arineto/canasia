@@ -38,10 +38,12 @@ def logout_aux(request):
 def overview(request, filter_value=None):
 	countries = Country.objects.all().order_by('name')
 	sectors = Sector.objects.all().order_by('name')
+	filter_country = None
 	
 	try:
 		country = Country.objects.get(name=filter_value)
 		projects = Project.objects.filter(country=country)
+		filter_country = filter_value
 	except:
 		try:
 			sector = Sector.objects.get(name=filter_value)
@@ -49,7 +51,7 @@ def overview(request, filter_value=None):
 		except:
 			projects = Project.objects.all()
 	
-	return render(request, 'overview.html', {'overview':True ,'projects':projects, 'countries':countries, 'sectors':sectors, 'filter_value':filter_value})
+	return render(request, 'overview.html', {'overview':True ,'projects':projects, 'countries':countries, 'sectors':sectors, 'filter_country':filter_country})
 
 
 @login_required
