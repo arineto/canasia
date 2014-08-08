@@ -34,6 +34,7 @@
 				content = "<div class='box_content'> <div class='box_title'> <h4>{{ project.country }}</h4> <h6>{{ project.sector }}</h6> </div> <div class='box_info'> <div class='box_image'><img src='{{ project.picture.url }}'></div> <div class='project_info'> <p><b>{{ project.company }}</b></p> <p>{{ project.title }}</p> </div> </div> </div>";
 		        create_marker("{{ project.title }}", "{{ project.latitude }}", "{{ project.longitude }}", image, content);
 			{% endfor %}
+			
 	    }
 	    google.maps.event.addDomListener(window, 'load', initialize);
 	</script>
