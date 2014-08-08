@@ -41,6 +41,14 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sectors<b class="caret"></b></a>
             <ul class="dropdown-menu" id="filters_drop">
+              <li>
+                <a href="/overview/">
+                  <div class="filter_line">
+                    <span class="filter_color_box"><img src="{{ STATIC_URL }}img/all_sectors.png"></span>
+                    <span>ALL SECTORS</span>
+                  </div>
+                </a>
+              </li>
               {% for sector in sectors %}
               <li>
                 <a href="/overview/{{ sector.name }}">
@@ -57,6 +65,13 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Countries<b class="caret"></b></a>
             <ul class="dropdown-menu" id="filters_drop">
+              <li>
+                <a href="/overview/">
+                  <div class="filter_line">
+                    <span>All Countries</span>
+                  </div>
+                </a>
+              </li>
               {% for country in countries %}
               <li>
                 <a href="/overview/{{ country.name }}">
