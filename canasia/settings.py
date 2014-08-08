@@ -20,11 +20,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = 'dg^a6uwpi76#f1)@1iqg8u&t%e*qb*+slg2b)8ek%+0tvx)4$-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = []
+# Honor the 'X-Forwarded-Proto' header for request.is_secure()
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -37,7 +40,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
-    'south'
+    'south',
+    'storages'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -59,8 +63,8 @@ WSGI_APPLICATION = 'canasia.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.path.join(BASE_DIR, 'db.canasia'),
     }
 }
 
@@ -94,3 +98,23 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'support@p15media.com'
 EMAIL_HOST_PASSWORD = '1nteractive'
 EMAIL_PORT = 587
+
+import dj_database_url
+DATABASES['default'] =  dj_database_url.config()
+
+try:
+    from local_settings import *
+except ImportError:
+    pass
+
+
+#Amazon Settings:
+if not DEBUG:
+    STATIC_URL = 'http://yumbrands.s3.amazonaws.com/'
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+    STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+    AWS_S3_SECURE_URLS = False
+    AWS_QUERYSTRING_AUTH = False
+    AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+    AWS_STORAGE_BUCKET_NAME = os.environ.get('S3_BUCKET_NAME')
