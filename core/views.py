@@ -36,8 +36,8 @@ def logout_aux(request):
 
 @login_required
 def overview(request, filter_value=None):
-	countries = Country.objects.all()
-	sectors = Sector.objects.all()
+	countries = Country.objects.all().order_by('name')
+	sectors = Sector.objects.all().order_by('name')
 	
 	try:
 		country = Country.objects.get(name=filter_value)
