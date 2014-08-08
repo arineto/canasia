@@ -23,6 +23,7 @@
 			var autocomplete = new google.maps.places.Autocomplete(input);
 
 			map = init_map(map);
+			highlight_countries("{{ filter_value }}");
 
 			{% for project in projects %}
 				var image = {

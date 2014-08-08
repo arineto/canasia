@@ -49,7 +49,7 @@ def overview(request, filter_value=None):
 		except:
 			projects = Project.objects.all()
 	
-	return render(request, 'overview.html', {'overview':True ,'projects':projects, 'countries':countries, 'sectors':sectors})
+	return render(request, 'overview.html', {'overview':True ,'projects':projects, 'countries':countries, 'sectors':sectors, 'filter_value':filter_value})
 
 
 @login_required
