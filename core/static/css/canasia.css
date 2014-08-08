@@ -253,3 +253,12 @@ th.headerSortUp {
 	-webkit-border-radius: 10px 10px 10px 10px;
 	border-radius: 10px 10px 10px 10px;
 }
+
+.data_chart{
+	position: absolute;
+	z-index: 3000;
+	right: 10px;
+	bottom: 20px;
+	width: 450px;
+	height: 95px;
+}

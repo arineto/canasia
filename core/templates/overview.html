@@ -72,6 +72,7 @@
 </head>
 <body>
 	{% include 'navbar.html' %}
+	<div class="data_chart"><img src="{{ STATIC_URL }}img/gdp_chart.png"></div>
 	<div id="map-canvas" class="{% if user.is_superuser %}authenticated{% endif %}"/>  
 </body>
 </html>
