@@ -76,7 +76,6 @@
 		function create_tables(){
 			var table;
 			{% if data_tables %}
-				$('#navbar_ul').append('<li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Data Tables<b class="caret"></b></a> <ul id="dropdown_ul" class="dropdown-menu" id="filters_drop"> </ul> </li>');
 				{% for data_table in data_tables %}
 					// alert(1);
 					table = highlight_countries("{{ filter_country }}", "{{ data_table.key }}", "{{ data_table.column }}");
