@@ -1,5 +1,4 @@
 var info_window;
-var gdp_table;
 
 function init_map(map){
 	var mapOptions = {
@@ -11,35 +10,36 @@ function init_map(map){
 	google.maps.event.addListener(map, 'zoom_changed', function() {
 	    zoomLevel = map.getZoom();
 	    if (zoomLevel <= 7) {
-	        gdp_table.setMap(map);
+	        data_table.setMap(map);
 	    } else {
-	        gdp_table.setMap(null);
+	        data_table.setMap(null);
 	    }
 	}); 
 
   	return map;
 }
 
-function highlight_countries(country){
+function highlight_countries(country, key, column){
 	var query;
 	if (country != "None"){
 		query = {
-			select: 'Geometry',
-			from: '1tkLc2e9Om028843apCcCAsrkLhsK7DL9MnLiqhg6',
+			select: column,
+			from: key,
 			where: "Name IN ('"+country+"')"
 		}
 	}else{
 		query = {
-			select: 'Geometry',
-			from: '1tkLc2e9Om028843apCcCAsrkLhsK7DL9MnLiqhg6',
+			select: column,
+			from: key,
 		}
 	}
-	gdp_table = new google.maps.FusionTablesLayer({
+	data_table = new google.maps.FusionTablesLayer({
 		query: query,
 		map: map,
 		styleId: 2,
 		templateId: 2,
-		styles: [ { polygonOptions: { fillOpacity: 0.65 } } ]
 	});
-}
 
+	data_table.setMap(null);
+	return data_table;
+}

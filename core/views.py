@@ -38,6 +38,7 @@ def logout_aux(request):
 def overview(request, filter_value=None):
 	countries = Country.objects.all().order_by('name')
 	sectors = Sector.objects.all().order_by('name')
+	data_tables = DataTable.objects.all()
 	filter_country = None
 	
 	try:
@@ -51,7 +52,7 @@ def overview(request, filter_value=None):
 		except:
 			projects = Project.objects.all()
 	
-	return render(request, 'overview.html', {'overview':True ,'projects':projects, 'countries':countries, 'sectors':sectors, 'filter_country':filter_country})
+	return render(request, 'overview.html', {'overview':True ,'projects':projects, 'countries':countries, 'sectors':sectors, "data_tables":data_tables,'filter_country':filter_country})
 
 
 @login_required

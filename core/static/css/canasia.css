@@ -260,5 +260,14 @@ th.headerSortUp {
 	right: 10px;
 	bottom: 20px;
 	width: 450px;
-	height: 95px;
+	height: 100px;
+}
+
+.data_chart img{
+	width: 450px;
+	height: 100px;
+}
+
+.margin_left{
+	margin-left: 15px;
 }

@@ -5,3 +5,4 @@ from core.models import *
 admin.site.register(Country)
 admin.site.register(Sector)
 admin.site.register(Project)
+admin.site.register(DataTable)
