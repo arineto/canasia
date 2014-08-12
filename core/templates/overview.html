@@ -79,7 +79,7 @@
 				$('#dropdown_ul').append('<li> <div class="filter_line margin_left"> <input type="radio" onclick="clean_table()" name="data_table"> Clean </div> </li>');
 				{% for data_table in data_tables %}
 					// alert(1);
-					table = highlight_countries("{{ filter_country }}", "{{ data_table.key }}", "{{ data_table.column }}");
+					table = highlight_countries("{{ filter_country }}", "{{ data_table.key }}", "{{ data_table.column }}", "{{ data_table.styleid }}");
 					$('#dropdown_ul').append('<li> <div class="filter_line margin_left"> <input type="radio" onclick="toggle_table(this)" name="data_table" id="{{ data_table.name }}" value="{{ data_table.name }}"> {{ data_table.name }} </div> </li>');
 					data_tables["{{ data_table.name }}"] = [table, "{{ data_table.chart.url }}"];
 				{% endfor %}

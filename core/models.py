@@ -35,6 +35,7 @@ class DataTable(models.Model):
 	name = models.CharField(max_length=50)
 	column = models.CharField(max_length=50)
 	key = models.CharField(max_length=100)
+	styleid = models.CharField(max_length=5)
 	chart = models.FileField(upload_to="chart/", null=True, blank=True)
 
 	def __unicode__(self):

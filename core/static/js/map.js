@@ -19,7 +19,7 @@ function init_map(map){
   	return map;
 }
 
-function highlight_countries(country, key, column){
+function highlight_countries(country, key, column, styleid){
 	var query;
 	if (country != "None"){
 		query = {
@@ -36,8 +36,8 @@ function highlight_countries(country, key, column){
 	data_table = new google.maps.FusionTablesLayer({
 		query: query,
 		map: map,
-		styleId: 2,
-		templateId: 2,
+		styleId: styleid,
+		// templateId: 140,
 	});
 
 	data_table.setMap(null);
