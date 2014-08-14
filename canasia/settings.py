@@ -111,7 +111,6 @@ except ImportError:
 #Amazon Settings:
 if not DEBUG:
     STATIC_URL = 'http://canasia.s3.amazonaws.com/'
-    MEDIA_URL = 'http://canasia.s3.amazonaws.com/'
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
     STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
     AWS_S3_SECURE_URLS = False
