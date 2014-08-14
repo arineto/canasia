@@ -80,6 +80,10 @@ def dashboard(request):
 
 def forgot_password(request):
 	answer = None
+	try:
+		login_picture = LoginPicture.objects.all().order_by('-id')[0]
+	except:
+		login_picture = None
 	if request.method == "POST":
 		email = request.POST.get("email")
 		try:
@@ -94,7 +98,7 @@ def forgot_password(request):
 		except:
 			answer = "There are no accounts registered in this email."
 
-	return render(request, 'login.html', {'forgot_password':True, 'answer':answer})
+	return render(request, 'login.html', {'forgot_password':True, 'answer':answer, 'login_picture':login_picture})
 
 
 @login_required
