@@ -12,6 +12,11 @@ def home(request):
 	if request.user.is_authenticated():
 		return redirect('/overview/')
 
+	try:
+		login_picture = LoginPicture.objects.all().order_by('-id')[0]
+	except:
+		login_picture = None
+
 	error = None
 	if request.method == "POST":
 		username = request.POST['username']
@@ -26,7 +31,7 @@ def home(request):
 		else:
 			error = "Invalid username/password"
 
-	return render(request, 'login.html', {'error':error})
+	return render(request, 'login.html', {'error':error, 'login_picture':login_picture})
 
 
 def logout_aux(request):
